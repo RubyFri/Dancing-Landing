@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 .mission {
+    margin: 5% 20%;
     background-color: #B6D7B9;
     color: #646536;
 }
@@ -10,7 +11,12 @@
     color: #646536;
 }
 
+html {
+    text-align: center;
+}
+
 body {
+    margin: 1%;
     background-color: #9ABD97;
     color:#483D03;
     font-family: "Montserrat", sans-serif;
