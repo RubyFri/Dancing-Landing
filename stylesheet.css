@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 .mission {
     background-color: #B6D7B9;
     color: #646536;
@@ -8,17 +10,22 @@
     color: #646536;
 }
 
-head {
-    background-color: #9ABD97;
-    color:#483D03;
-}
-
 body {
     background-color: #9ABD97;
     color:#483D03;
-
+    font-family: "Montserrat", sans-serif;
 }
 
 p {
     color: #646536
+}
+
+#blue-text {
+    color: blue;
+    font-style: italic;
+}
+
+#dancer-header {
+    font-family: "Montserrat", serif;
+    font-style: oblique;
 }
