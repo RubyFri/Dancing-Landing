@@ -13,6 +13,46 @@
 }
 
 
+.navbar {
+    background-color: rgb(25, 173, 72);;
+  }
+
+  .navbar ul {
+    list-style: none;
+    width: 500px;
+    margin: 0 auto;
+
+    padding: 0;
+    /* 
+          For navbars use background color that stands out.
+    */
+    background-color: rgb(25, 173, 72);
+    text-align: center;
+  }
+  
+  /*  
+      Style individual list items.
+  */
+  .navbar li {
+    width: 150 px;
+    border: 2px solid rgb(32, 152, 70);
+    /* 
+          Show the navbar elements next to each other instead of on top of each 
+          other. 
+    */
+    padding: 9px;
+    display: inline-block;
+    line-height: 40px;
+  }
+  
+  /* 
+      Style links in navbar.
+  */
+  .navbar a {
+    color: #fff;
+    text-decoration: none;
+  }
+
 .flex-image{
     display: flex;
     flex-direction: row;
@@ -56,3 +96,4 @@ p {
     font-family: "Montserrat", serif;
     font-style: oblique;
 
+}
