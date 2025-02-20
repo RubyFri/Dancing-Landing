@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 .mission {
@@ -9,6 +10,26 @@
 .dancers {
     background-color: #D0F1BF;
     color: #646536;
+}
+
+
+.flex-image{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 5%;
+    gap: 1%;
+}
+
+
+.flex-image-ind{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 1%;
+    gap: 1%;
 }
 
 html {
@@ -34,4 +55,4 @@ p {
 #dancer-header {
     font-family: "Montserrat", serif;
     font-style: oblique;
-}
+
