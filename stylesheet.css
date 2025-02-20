@@ -12,6 +12,7 @@
     color: #646536;
 }
 
+
 .flex-image{
     display: flex;
     flex-direction: row;
@@ -54,5 +55,4 @@ p {
 #dancer-header {
     font-family: "Montserrat", serif;
     font-style: oblique;
-}
 
