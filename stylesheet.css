@@ -105,6 +105,18 @@ p {
 
 }
 
+#ruby {
+    margin: 0% 20%;
+    text-align: center;
+}
+#yenta {
+    margin: 0% 20%;
+    text-align: center;
+}
+#sage {
+    margin: 0% 20%;
+    text-align: center;
+}
 
 .iframe-class {
     background-color: black;
