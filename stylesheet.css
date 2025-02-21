@@ -34,7 +34,7 @@
       Style individual list items.
   */
   .navbar li {
-    width: 25%;
+    width: 40%;
     border: 2px solid rgb(32, 152, 70);
     /* 
           Show the navbar elements next to each other instead of on top of each 
