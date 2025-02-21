@@ -48,7 +48,8 @@
       Style links in navbar.
   */
   .navbar a {
-    color: #fff;
+    color: #ffffff;
+    font-weight: bold;
     text-decoration: none;
   }
 
