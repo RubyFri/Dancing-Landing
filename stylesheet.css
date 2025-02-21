@@ -105,6 +105,10 @@ p {
 
 }
 
+.intros {
+    margin: 0% 20%;
+    text-align: center;
+}
 
 .iframe-class {
     background-color: black;
