@@ -105,15 +105,7 @@ p {
 
 }
 
-#ruby {
-    margin: 0% 20%;
-    text-align: center;
-}
-#yenta {
-    margin: 0% 20%;
-    text-align: center;
-}
-#sage {
+.intros {
     margin: 0% 20%;
     text-align: center;
 }
