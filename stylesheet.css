@@ -14,7 +14,7 @@
 
 
 .navbar {
-    background-color: rgb(25, 173, 72);;
+    background-color: rgb(20, 148, 60);
   }
 
   .navbar ul {
@@ -26,7 +26,6 @@
     /* 
           For navbars use background color that stands out.
     */
-    background-color: rgb(25, 173, 72);
     text-align: center;
   }
   
@@ -35,7 +34,7 @@
   */
   .navbar li {
     width: 40%;
-    border: 2px solid rgb(32, 152, 70);
+    border: 2px solid rgb(0, 80, 25);
     /* 
           Show the navbar elements next to each other instead of on top of each 
           other. 
