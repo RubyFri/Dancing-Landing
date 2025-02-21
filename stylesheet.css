@@ -97,3 +97,10 @@ p {
     font-style: oblique;
 
 }
+
+
+.iframe-class {
+    background-color: black;
+    color: white;
+    margin: 0px
+}
