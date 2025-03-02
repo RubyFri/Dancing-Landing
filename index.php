@@ -48,7 +48,7 @@
         <div id="book" class="book">
           <ul>
             <a href="createAcc.php">Create Account</a></li>
-            <a href="logIn.html">Log In</a></li>
+            <a href="logIn.php">Log In</a></li>
           </ul>
       </div>
       <p> This site was designed and published as part of the COMP 333 Software Engineering class at Wesleyan University. This is an exercise.
