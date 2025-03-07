@@ -15,12 +15,14 @@
   </head>
 
   <body>
-
+  <?php
+    session_start();
+  ?>
   <div class="dancers">
     <div id="navbar" class="navbar">
       <ul>
-        <li><a href="index.html">Home Page</a></li>
-        <li><a href="MeetDancers.html">Meet the Dancers</a></li>
+        <li><a href="index.php">Home Page</a></li>
+        <li><a href="MeetDancers.php">Meet the Dancers</a></li>
         <li><a href="createAcc.php">Create Account</a></li>
         <li><a href="logIn.php">Log In</a></li>
       </ul>
