@@ -10,8 +10,15 @@
   </head> 
 
   <body>
+    <div id="navbar" class="navbar">
+        <ul>
+          <li><a href="index.html#home">Home Page</a></li>
+          <li><a href="MeetDancers.html">Meet the Dancers</a></li>
+          <li><a href="logInLanding.php">My Profile</a></li>
+        </ul>
+    </div>
     <!-- The ID input form-->
-    <div id="form">
+    <div id="form">  
       <h1>Change Booking</h1>
       <form name="form" action="" method="POST">
         <p>

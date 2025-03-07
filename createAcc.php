@@ -29,8 +29,6 @@ Bookings table schema:
         <ul>
           <li><a href="index.html#home">Home Page</a></li>
           <li><a href="MeetDancers.html">Meet the Dancers</a></li>
-          <li><a href="logInLanding.php">Log In Landing</a></li>
-
         </ul>
     </div>
 <!-- 
