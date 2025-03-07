@@ -49,7 +49,7 @@
             </select>
             <span id="error-message" style="color: red; display: none;">Please select a valid option.</span>
         </p>
-          <input type="submit" id="button" value="Create Booking" />
+          <input type="submit" id="button" value="Change Booking" />
         </form>
       </form>
     </div>
@@ -57,6 +57,7 @@
     <?php
         // Starts the session and gathers appropriate variables
         session_start();
+        include "config.php";
         $username = $_SESSION['username'];
         $id = $_POST['id'];
         $date = $_POST["date"];
