@@ -23,7 +23,7 @@
       <form name="form" action="" method="POST">
         <p>
           <label> Booking ID: </label>
-          <input type="number" id="id" name="id" require/>
+          <input type="number" id="id" name="id" required/>
         </p>
         <p>
            <label for="date">Booking Date</label>
@@ -50,17 +50,15 @@
             <span id="error-message" style="color: red; display: none;">Please select a valid option.</span>
         </p>
           <input type="submit" id="button" value="Create Booking" />
-          <p><?php if(!empty($out_value)){echo $out_value;}?></p>
         </form>
-        </p>
       </form>
     </div>
 
     <?php
         // Starts the session and gathers appropriate variables
-        session_start()
-        $username = $_SESSION['username']
-        $id = $_POST['id']
+        session_start();
+        $username = $_SESSION['username'];
+        $id = $_POST['id'];
         $date = $_POST["date"];
         $time = $_POST["time"];
         $dancers = $_POST["dancers"];
@@ -77,9 +75,10 @@
         }
         else {
             $sql = "UPDATE bookings
-            SET b_date = $date, b_time = $time, b_dancers = $dancers
-            WHERE b_id = $id AND b_username = $username";
+            SET b_date = ?, b_time = ?, b_dancers = ?
+            WHERE b_id = ? AND b_username = ?";
             $stmt = mysqli_prepare($conn, $sql);
+            mysqli_stmt_bind_param($stmt, "sssis", $date, $time, $dancers, $id, $username);
             if (mysqli_stmt_execute($stmt)) {
                 echo "Booking altered!";
                 exit();
