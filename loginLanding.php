@@ -20,6 +20,17 @@ session_start();
 if (isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
     echo "<h2>Welcome, $username</h2>";
+    echo '<div class="options">
+    <a href="createBooking.php" class="option-card">
+        <h3>Create Booking</h3>
+    </a>
+    <a href="deleteBooking.php" class="option-card">
+        <h3>Delete Booking</h3>
+    </a>
+    <a href="changeBooking.php" class="option-card">
+        <h3>Modify Booking</h3>
+    </a>
+  </div>';
 } else {
     echo "<h2>Please log in</h2>";
     exit;
@@ -80,12 +91,6 @@ $stmt->close();
 $db->close();
 ?>
 
-<div class="navbar">
-        <ul>
-          <li><a href="createBooking.php">Create Booking</a></li>
-          <li><a href="deleteBooking.php">Delete Booking</a></li>
-          <li><a href="changeBooking.php">Modify Booking</a></li>
-        </ul>
-</div>
+
 </body>
 </html>
