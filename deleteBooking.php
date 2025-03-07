@@ -43,19 +43,20 @@ Bookings table schema:
     <?php
         session_start();
         include "config.php";
-        $bookingid = $_POST['bookingid'];
-        $username = $_SESSION['username']
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+          $bookingid = $_POST['bookingid'];
+          $username = $_SESSION['username'];
 
-        // We determine if the given ID is in the user's bookings
-        $check_sql_id = "SELECT * FROM bookings WHERE b_id = ? AND b_username = ?";
-        $check_stmt_id = mysqli_prepare($conn, $check_sql_id);
-        mysqli_stmt_bind_param($check_stmt_id, "is", $bookingid, $username);
-        mysqli_stmt_execute($check_stmt_id);
-        mysqli_stmt_store_result($check_stmt_id);
-        if (mysqli_stmt_num_rows($check_stmt_id) == 0) {
-            echo "Booking not found. It was either made under a different username or not at all. Please check your bookings for further information.";
-            exit();
-        }
+          // We determine if the given ID is in the user's bookings
+          $check_sql_id = "SELECT * FROM bookings WHERE b_id = ? AND b_username = ?";
+          $check_stmt_id = mysqli_prepare($conn, $check_sql_id);
+          mysqli_stmt_bind_param($check_stmt_id, "is", $bookingid, $username);
+          mysqli_stmt_execute($check_stmt_id);
+          mysqli_stmt_store_result($check_stmt_id);
+          if (mysqli_stmt_num_rows($check_stmt_id) == 0) {
+              echo "Booking not found. It was either made under a different username or not at all. Please check your bookings for further information.";
+              exit();
+         }
 
         // Finally, we delete the booking
         $sql = "DELETE FROM bookings WHERE b_id = ?";
@@ -68,6 +69,7 @@ Bookings table schema:
         else {
             echo "An error has occurred. Please try again.";
         }
+      }
     ?>
 
 </body>
