@@ -35,7 +35,7 @@
     </div>
     <?php
     session_start();
-    if(isset($_SERVER['username'])){
+    if(isset($_SESSION['username'])){
       header("Location: loginLanding.php");
       exit();
     }
@@ -58,11 +58,11 @@
           mysqli_stmt_bind_result($stmt, $hashed_password);
           mysqli_stmt_fetch($stmt);
           if (password_verify($password1, $hashed_password)) {
-            echo "Login Success";
             $_SESSION['loggedin'] = true;
             $_SESSION['username'] = $userid;
             // Redirect to landing page
             header("Location: loginLanding.php");
+            exit();
             
           }
           else {
