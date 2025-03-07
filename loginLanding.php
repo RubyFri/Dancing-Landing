@@ -16,8 +16,8 @@
         </ul>
     </div>
     <?php
-session_start();
-if (isset($_SESSION['username'])) {
+    session_start();
+    if (isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
     echo "<h2>Welcome, $username</h2>";
     echo '<div class="options">
@@ -36,29 +36,19 @@ if (isset($_SESSION['username'])) {
   </div>';
 } else {
     echo "<h2>Please log in</h2>";
-    exit;
+    exit();
 }
 
 include 'config.php';
 
 // SQL query to fetch all bookings
 $query = "SELECT * FROM bookings";
-$stmt = $db->prepare($query);
-
-if (!$stmt) {
-    // Query preparation failed, display the error
-    die("Error preparing the query: " . $db->error);
-}
-
-// Execute the query
-$stmt->execute();
-
-// Get the result
-$result = $stmt->get_result();
+$result = mysqli_query($conn, $query);
+$numrows = mysqli_num_rows($result);
 
 if ($result) {
     // Check if there are bookings
-    if ($result->num_rows > 0) {
+    if ($numrows > 0) {
         echo "<table border='1'>
                 <thead>
                     <tr>
@@ -71,7 +61,7 @@ if ($result) {
                 <tbody>";
 
         // Loop through and output the bookings
-        while ($row = $result->fetch_assoc()) {
+        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             echo "<tr>
                     <td>" . htmlspecialchars($row['b_id']) . "</td>
                     <td>" . htmlspecialchars($row['b_date']) . "</td>
@@ -86,12 +76,8 @@ if ($result) {
     }
 } else {
     // If there was an error in the result, show the error
-    echo "<p>Error fetching data: " . $db->error . "</p>";
+    echo "<p>Error fetching data.</p>";
 }
-
-// Close the statement and connection
-$stmt->close();
-$db->close();
 ?>
 
 
