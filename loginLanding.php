@@ -15,27 +15,35 @@
           <li><a href="deleteBooking.php">Delete Booking</a></li>
         </ul>
     </div>
-
     <?php
-    session_start();
-    // not sure if tehre might be a case where this is not the case. 
-    if (isset($_SESSION['username'])) {
-        $username = $_SESSION['username'];
-        echo "<h2>Welcome, $username</h2>"; // Display welcome message
-    } else {
-        echo "<h2>Please log in</h2>";
-        exit;
-    }
-    include 'config.php';
-    // sql query to the bookings table
-    $query = "SELECT * FROM bookings"
-    // Prepare and execute the query
-    $stmt = $db->prepare($query);
-    $stmt->bind_param("s", $current_date); // Bind the current date parameter
-    $stmt->execute();
-    $result = $stmt->get_result();
+session_start();
+if (isset($_SESSION['username'])) {
+    $username = $_SESSION['username'];
+    echo "<h2>Welcome, $username</h2>";
+} else {
+    echo "<h2>Please log in</h2>";
+    exit;
+}
 
-    // Check if there are any bookings to display
+include 'config.php';
+
+// SQL query to fetch all bookings
+$query = "SELECT * FROM bookings";
+$stmt = $db->prepare($query);
+
+if (!$stmt) {
+    // Query preparation failed, display the error
+    die("Error preparing the query: " . $db->error);
+}
+
+// Execute the query
+$stmt->execute();
+
+// Get the result
+$result = $stmt->get_result();
+
+if ($result) {
+    // Check if there are bookings
     if ($result->num_rows > 0) {
         echo "<table border='1'>
                 <thead>
@@ -48,26 +56,26 @@
                 </thead>
                 <tbody>";
 
-        // Loop through the result and display each booking
+        // Loop through and output the bookings
         while ($row = $result->fetch_assoc()) {
             echo "<tr>
-                    <td>" . htmlspecialchars($row['booking_id']) . "</td>
-                    <td>" . htmlspecialchars($row['customer_name']) . "</td>
+                    <td>" . htmlspecialchars($row['b_id']) . "</td>
                     <td>" . htmlspecialchars($row['b_date']) . "</td>
-                    <td>" . htmlspecialchars($row['additional_info']) . "</td>
+                    <td>" . htmlspecialchars($row['b_time']) . "</td>
+                    <td>" . htmlspecialchars($row['b_dancers']) . "</td>
                 </tr>";
         }
+
         echo "</tbody></table>";
     } else {
         echo "<p>No bookings found.</p>";
     }
+} else {
+    // If there was an error in the result, show the error
+    echo "<p>Error fetching data: " . $db->error . "</p>";
+}
 
-    // Close the database connection
-    $stmt->close();
-    $db->close();
-    ?>
-
-  </body>
-</html>
-
-    
+// Close the statement and connection
+$stmt->close();
+$db->close();
+?>
