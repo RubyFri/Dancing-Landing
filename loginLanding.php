@@ -19,7 +19,7 @@
     session_start();
     if (isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
-    echo "<h2>Welcome, $username</h2>";
+    echo "<h2>You are currently logged in as, $username</h2>";
     echo '<div class="options">
     <a href="createBooking.php" class="option-card">
         <h3>Create Booking</h3>
