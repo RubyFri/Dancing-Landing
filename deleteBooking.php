@@ -51,7 +51,7 @@ Bookings table schema:
           $bookingid = $_POST['bookingid'];
           $username = $_SESSION['username'];
 
-          if (!empty($bookingid) && !empty($username) {
+          if (!empty($bookingid) && !empty($username)) {
             // We determine if the given ID is in the user's bookings
             $check_sql_id = "SELECT * FROM bookings WHERE b_id = ? AND b_username = ?";
             $check_stmt_id = mysqli_prepare($conn, $check_sql_id);
