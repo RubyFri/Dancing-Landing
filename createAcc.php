@@ -24,7 +24,7 @@
         </p>
 
         <p>
-          <label> New Password: </label>
+          <label> New Password (must be at least 10 characters): </label>
           <input type="password" id="pass1" name="password1" />
         </p>
         <p>
@@ -46,7 +46,11 @@
     if ($password1 !== $password2) {
       echo "Passwords do not match, try again!";
       exit(); 
-  }
+    }
+    if (strlen($password1)<10) {
+      echo "Passwords is too short, try again!";
+      exit(); 
+    }
   $check_sql = "SELECT * FROM users WHERE username = ?";
   $check_stmt = mysqli_prepare($conn, $check_sql);
   mysqli_stmt_bind_param($check_stmt, "s", $userid);
