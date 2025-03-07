@@ -80,12 +80,10 @@ $stmt->close();
 $db->close();
 ?>
 
-<div class="navbar">
-        <ul>
-          <li><a href="createBooking.php">Create Booking</a></li>
-          <li><a href="deleteBooking.php">Delete Booking</a></li>
-          <li><a href="changeBooking.php">Modify Booking</a></li>
-        </ul>
+<div class="options">
+    <button onclick="location.href='createBooking.php'">Create Booking</button>
+    <button onclick="location.href='deleteBooking.php'">Delete Booking</button>
+    <button onclick="location.href='changeBooking.php'">Modify Booking</button>
 </div>
 </body>
 </html>
