@@ -56,6 +56,9 @@
         echo "Login Success";
         $_SESSION['loggedin'] = true;
         $_SESSION['username'] = $userid;
+        // Redirect to landing page
+        header("Location: loginLanding.php");
+        
       }
       else {
         echo "Wrong User id or password";
@@ -64,8 +67,10 @@
     else {
       echo "Wrong User id or password";
     }
+
   }
   ?>
+
   </body>
 
   </html>
