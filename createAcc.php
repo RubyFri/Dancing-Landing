@@ -13,8 +13,10 @@
         <ul>
           <li><a href="index.html#home">Home Page</a></li>
           <li><a href="MeetDancers.html">Meet the Dancers</a></li>
+          <li><a href="createBooking.php">Create a Booking</a></li>
+          <li><a href="deleteBooking.php">Delete a Booking</a></li>
         </ul>
-      </div>
+    </div>
      <div id="form">
       <h1>CREATE ACCOUNT</h1>
       <form name="form" action="" method="POST">
