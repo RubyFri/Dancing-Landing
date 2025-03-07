@@ -80,7 +80,7 @@ $stmt->close();
 $db->close();
 ?>
 
-<div id="navbar" class="navbar">
+<div class="navbar">
         <ul>
           <li><a href="createBooking.php">Create Booking</a></li>
           <li><a href="deleteBooking.php">Delete Booking</a></li>
