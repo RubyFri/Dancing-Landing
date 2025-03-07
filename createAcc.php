@@ -1,115 +1,92 @@
-<!-- 
-This is a PHP script so users can BOOK an appointment. 
-The form requires users to enter 3 values: date, time and dancers, and these
-values get added to a row in the app-db db, bookings table.
-Bookings table schema:
-    primary key: id, INT(11)  #
-    foreign key: username, VARCHAR(255) # user's username
-    Date, DATE # booking date
-    Time, TIME # booking time (EST)
-    Dancer, VARCHAR(15) // user chooses which dancer/s they want to book
--->
-
-
 <!DOCTYPE html>
 <html lang="en">
-  <meta charset="utf-8" />
   <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Dancing Queens</title>
+    <meta name = "description" content="Create an account for Dancing Queens">
 
-<!-- This is the default encoding type for the HTML Form post submission. 
-  Encoding type tells the browser how the form data should be encoded before 
-  sending the form data to the server. 
--->
-    <meta http-equiv="Content-Type" content="application/x-www-form-urlencoded"/>
     <link rel="stylesheet" href="stylesheet.css">
-    <title>Booking Form</title>
   </head> 
   <body>
-  <div id="navbar" class="navbar">
+    <div id="navbar" class="navbar">
         <ul>
-          <li><a href="index.php">Home Page</a></li>
-          <li><a href="MeetDancers.php">Meet the Dancers</a></li>
+          <li><a href="index.html#home">Home Page</a></li>
+          <li><a href="MeetDancers.html">Meet the Dancers</a></li>
         </ul>
     </div>
-<!-- 
-  PHP server-side code
- -->
- <?php
-        session_start();
-        if(isset($_SESSION['loggedin'])){
-        
-        $username = $_SESSION['username']; 
-        echo "You are currently logged in as " . $_SESSION['username'];
-
-        // import vars for server connection and connect to sql
-        require_once "config.php";
-
-        // If the user enters those values, post it to the server. HTMl ensures that fields aren't left blank
-        // ($_SERVER["REQUEST_METHOD"] and $_POST are parts of the PHP language.)
-        
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $out_value = "";
-            $date = $_POST["date"];
-            $time = $_POST["time"];
-            $dancers = $_POST["dancers"];
-            
-            // Prepare SQL query with the data to post the database.
-            $sql_query = "INSERT INTO bookings (b_username, b_date, b_time, b_dancers) VALUES ('$username', '$date', '$time', '$dancers')";
-       
-            // Send the query to the database and check if it was successful
-            if (mysqli_query($conn, $sql_query)) {
-                $out_value = "Successfully booked!";
-            } else {
-                $out_value = "Error: " . mysqli_error($conn);  // Display error if query fails
-            };
-            echo $out_value;
-        }
-        
-        $conn->close();}
-        else {
-        // Redirect to landing page
-        header("Location: logIn.php");
-        }
-        ?>
-  <!-- Create text boxes for user to input booking date, time, and dancer/s selection. -->
-  <div id="form">
-      <h1>CREATE BOOKING</h1>
+     <div id="form">
+      <h1>CREATE ACCOUNT</h1>
       <form name="form" action="" method="POST">
+        <p>
+          <label> New Username: </label>
+          <input type="text" id="user" name="userid" required/>
+        </p>
 
-        <!-- date input box-->
         <p>
-           <label for="date">Booking Date</label>
-           <input type="date" id="date" name="date" required value="<?php echo $date;?>"/>
+          <label> New Password (must be at least 10 characters): </label>
+          <input type="password" id="pass1" name="password1"required/>
         </p>
-        <!-- time input box-->
         <p>
-           <label for="time">Booking Time</label>
-           <input type="time" id="time" name="time" required value="<?php echo $time;?>"/>
+          <label>Confirm New Password: </label>
+          <input type="password" id="pass2" name="password2"required/>
         </p>
-        <!-- dancer input box-->
+
         <p>
-            <label for="Dancing-Queens">Dancers Selection</label>
-            <select id="dancers" name="dancers" required value="<?php echo $dancers;?>">
-                <option value="" disabled selected>Select Dancers</option>
-                <option value="sage">Sage</option>
-                <option value="Ruby">Ruby</option>
-                <option value="Yenta">Yenta</option>
-                <option value="Sage & Yenta">Sage & Yenta</option>
-                <option value="Sage & Ruby">Sage & Ruby</option>
-                <option value="Yenta & Ruby">Yenta & Ruby</option>
-                <option value="Yenta, Sage & Ruby">Yenta, Sage & Ruby</option>
-            </select>
-            <span id="error-message" style="color: red; display: none;">Please select a valid option.</span>
+          <input type="submit" id="button" value="Create Account" />
         </p>
-        
-          <input type="submit" id="button" value="Create Booking" />
-          <p><?php 
-        if(!empty($out_value)){
-        echo $out_value;
-        }
-        ?></p>
       </form>
-  </div>
+    </div>
 
- </body>
- </html>   
+    <?php
+    session_start();
+    include 'config.php';
+    $userid = $_POST['userid'];
+    $password1 = $_POST['password1'];
+    $password2 = $_POST['password2'];
+    if ($password1 !== $password2) {
+      echo "Passwords do not match, try again!";
+      exit(); 
+    }
+    if (strlen($password1)<10) {
+      echo "Passwords is too short, try again!";
+      exit(); 
+    }
+  $check_sql = "SELECT * FROM users WHERE username = ?";
+  $check_stmt = mysqli_prepare($conn, $check_sql);
+  mysqli_stmt_bind_param($check_stmt, "s", $userid);
+  mysqli_stmt_execute($check_stmt);
+  mysqli_stmt_store_result($check_stmt);
+
+  if (mysqli_stmt_num_rows($check_stmt) > 0) {
+      echo "Username already taken, try again!";
+      exit();
+  }
+    $password = password_hash($password1, PASSWORD_DEFAULT);
+
+
+    // Use placeholders ? for username and password values for the time being.
+    $sql = "INSERT INTO users (username, password) VALUES (?, ?)";
+
+    $stmt = mysqli_prepare($conn, $sql);
+
+    mysqli_stmt_bind_param($stmt, "ss", $userid, $password);
+    
+
+    
+   if (mysqli_stmt_execute($stmt)) {
+      echo "Account Created Successfully"; ?>
+      <html>
+      <ul> <a href="logIn.php">Log In to your new account!</a></li><ul>
+      </html>
+      <?php
+    } else {
+      echo "Failure Creating Account";
+    }
+
+    ?>
+
+
+  </body>
+
+  </html>
