@@ -49,7 +49,7 @@ Bookings table schema:
         session_start();  
         // should tell the user that they are logged in ontop of page
         if(isset($_SESSION['username'])){
-          echo "You are currently logge in as " . $_SESSION['username'];
+          echo "You are currently logged in as " . $_SESSION['username'];
         }
     
         // If the user enters those values, post it to the server. HTMl ensures that fields aren't left blank

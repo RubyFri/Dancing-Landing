@@ -19,7 +19,7 @@
     session_start();
     // should tell the user that they are logged in ontop of page
     if(isset($_SESSION['username'])){
-      echo "You are currently logge in as " . $_SESSION['username'];
+      echo "You are currently logged in as " . $_SESSION['username'];
     }
   ?>
   <div class="dancers">
