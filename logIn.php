@@ -28,6 +28,7 @@
       </form>
     </div>
     <?php
+    session_start();
     include 'config.php';
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $userid = $_POST['userid'];
@@ -47,6 +48,8 @@
       mysqli_stmt_fetch($stmt);
       if (password_verify($password1, $hashed_password)) {
         echo "Login Success";
+        $_SESSION['loggedin'] = true;
+        $_SESSION['username'] = $userid;
       }
       else {
         echo "Wrong User id or password";

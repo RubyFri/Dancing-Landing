@@ -39,6 +39,7 @@
     </div>
 
     <?php
+    session_start();
     include 'config.php';
     $userid = $_POST['userid'];
     $password1 = $_POST['password1'];
@@ -66,6 +67,7 @@
     $stmt = mysqli_prepare($conn, $sql);
 
     mysqli_stmt_bind_param($stmt, "ss", $userid, $password);
+    
 
     
    if (mysqli_stmt_execute($stmt)) {

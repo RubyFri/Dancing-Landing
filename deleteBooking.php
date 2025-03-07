@@ -40,8 +40,10 @@ Bookings table schema:
     </div>
     <!-- The PHP code -->
     <?php
+        session_start();
         include "config.php";
         $bookingid = $_POST['bookingid'];
+        $username = $_SESSION['username']
 
         // We determine if the given ID is in the user's bookings
         $check_sql_id = "SELECT * FROM bookings WHERE b_id = ? AND b_username = ?";
