@@ -56,38 +56,39 @@
       echo "Passwords is too short, try again!";
       exit(); 
     }
-  $check_sql = "SELECT * FROM users WHERE username = ?";
-  $check_stmt = mysqli_prepare($conn, $check_sql);
-  mysqli_stmt_bind_param($check_stmt, "s", $userid);
-  mysqli_stmt_execute($check_stmt);
-  mysqli_stmt_store_result($check_stmt);
+    if (!empty($userid) && !empty($password1)) {
+      $check_sql = "SELECT * FROM users WHERE username = ?";
+      $check_stmt = mysqli_prepare($conn, $check_sql);
+      mysqli_stmt_bind_param($check_stmt, "s", $userid);
+      mysqli_stmt_execute($check_stmt);
+      mysqli_stmt_store_result($check_stmt);
 
-  if (mysqli_stmt_num_rows($check_stmt) > 0) {
-      echo "Username already taken, try again!";
-      exit();
-  }
-    $password = password_hash($password1, PASSWORD_DEFAULT);
+      if (mysqli_stmt_num_rows($check_stmt) > 0) {
+          echo "Username already taken, try again!";
+          exit();
+      }
+        $password = password_hash($password1, PASSWORD_DEFAULT);
 
 
-    // Use placeholders ? for username and password values for the time being.
-    $sql = "INSERT INTO users (username, password) VALUES (?, ?)";
+        // Use placeholders ? for username and password values for the time being.
+        $sql = "INSERT INTO users (username, password) VALUES (?, ?)";
 
-    $stmt = mysqli_prepare($conn, $sql);
+        $stmt = mysqli_prepare($conn, $sql);
 
-    mysqli_stmt_bind_param($stmt, "ss", $userid, $password);
-    
+        mysqli_stmt_bind_param($stmt, "ss", $userid, $password);
+        
 
-    
-   if (mysqli_stmt_execute($stmt)) {
-      echo "Account Created Successfully"; ?>
-      <html>
-      <ul> <a href="logIn.php">Log In to your new account!</a></li><ul>
-      </html>
-      <?php
-    } else {
-      echo "Failure Creating Account";
-    }
-
+        
+      if (mysqli_stmt_execute($stmt)) {
+          echo "Account Created Successfully"; ?>
+          <html>
+          <ul> <a href="logIn.php">Log In to your new account!</a></li><ul>
+          </html>
+          <?php
+        } else {
+          echo "Failure Creating Account";
+        }
+      } 
     ?>
 
 
