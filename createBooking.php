@@ -45,6 +45,7 @@ Bookings table schema:
 
         // Get the logged-in user's username 
         session_start();  
+        echo("You are currently logged in as " + $_SESSION['username'])
 
         // If the user enters those values, post it to the server. HTMl ensures that fields aren't left blank
         // ($_SERVER["REQUEST_METHOD"] and $_POST are parts of the PHP language.)
