@@ -30,6 +30,9 @@ if (isset($_SESSION['username'])) {
     <a href="changeBooking.php" class="option-card">
         <h3>Modify Booking</h3>
     </a>
+    <a href="logout.php" class="option-card">
+        <h3>Log Out</h3>
+    </a>
   </div>';
 } else {
     echo "<h2>Please log in</h2>";
