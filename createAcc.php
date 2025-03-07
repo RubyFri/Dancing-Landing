@@ -20,16 +20,16 @@
       <form name="form" action="" method="POST">
         <p>
           <label> New Username: </label>
-          <input type="text" id="user" name="userid"/>
+          <input type="text" id="user" name="userid" required/>
         </p>
 
         <p>
           <label> New Password (must be at least 10 characters): </label>
-          <input type="password" id="pass1" name="password1" />
+          <input type="password" id="pass1" name="password1"required/>
         </p>
         <p>
           <label>Confirm New Password: </label>
-          <input type="password" id="pass2" name="password2" />
+          <input type="password" id="pass2" name="password2"required/>
         </p>
 
         <p>
