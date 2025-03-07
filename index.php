@@ -13,12 +13,19 @@
   <body>
     <div id="navbar" class="navbar">
         <ul>
-          <li><a href="index.html#home">Home Page</a></li>
-          <li><a href="MeetDancers.html">Meet the Dancers</a></li>
+          <li><a href="index.php">Home Page</a></li>
+          <li><a href="MeetDancers.php">Meet the Dancers</a></li>
           <li><a href="createAcc.php">Create Account</a></li>
           <li><a href="logIn.php">My Profile</a></li>
         </ul>
     </div>
+    <?php
+        session_start();
+        if(isset($_SESSION['loggedin'])){
+        
+        $username = $_SESSION['username']; 
+        echo "You are currently logged in as " . $_SESSION['username'];
+        ?>
   
     <h1>
       Feeling
