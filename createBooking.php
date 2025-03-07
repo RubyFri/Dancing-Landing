@@ -24,6 +24,12 @@ Bookings table schema:
     <title>Booking Form</title>
   </head> 
   <body>
+  <div id="navbar" class="navbar">
+        <ul>
+          <li><a href="index.html#home">Home Page</a></li>
+          <li><a href="MeetDancers.html">Meet the Dancers</a></li>
+        </ul>
+    </div>
 <!-- 
   PHP server-side code
  -->
