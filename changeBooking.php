@@ -12,8 +12,8 @@
   <body>
     <div id="navbar" class="navbar">
         <ul>
-        <li><a href="index.html">Home Page</a></li>
-        <li><a href="MeetDancers.html">Meet the Dancers</a></li>
+        <li><a href="index.php">Home Page</a></li>
+        <li><a href="MeetDancers.php">Meet the Dancers</a></li>
           <li><a href="logInLanding.php">My Profile</a></li>
         </ul>
     </div>
@@ -49,7 +49,7 @@
             </select>
             <span id="error-message" style="color: red; display: none;">Please select a valid option.</span>
         </p>
-          <input type="submit" id="button" value="Create Booking" />
+          <input type="submit" id="button" value="Change Booking" />
         </form>
       </form>
     </div>
@@ -57,6 +57,7 @@
     <?php
         // Starts the session and gathers appropriate variables
         session_start();
+        include "config.php";
         $username = $_SESSION['username'];
         $id = $_POST['id'];
         $date = $_POST["date"];
