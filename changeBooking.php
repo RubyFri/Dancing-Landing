@@ -57,6 +57,10 @@
     <?php
         // Starts the session and gathers appropriate variables
         session_start();
+              // should tell the user that they are logged in ontop of page
+        if(isset($_SESSION['username'])){
+          echo "You are currently logge in as " . $_SESSION['username'];
+        }
         include "config.php";
         $username = $_SESSION['username'];
         $id = $_POST['id'];
