@@ -34,7 +34,43 @@ Bookings table schema:
 <!-- 
   PHP server-side code
  -->
- <div id="form">
+ <?php
+        // import vars for server connection and connect to sql
+        require_once "config.php";
+        $conn = new mysqli($servername, $username, $password, $dbname);
+        // Check connection: used for testing
+        //  if ($conn->connect_error) {
+        //     die("Connection failed: " . $conn->connect_error);
+        // }
+        // echo "Connected successfully";
+
+        // Get the logged-in user's username 
+        session_start();  
+        echo("You are currently logged in as " + $_SESSION['username'])
+
+        // If the user enters those values, post it to the server. HTMl ensures that fields aren't left blank
+        // ($_SERVER["REQUEST_METHOD"] and $_POST are parts of the PHP language.)
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $out_value = "";
+            $date = $_POST["date"];
+            $time = $_POST["time"];
+            $dancers = $_POST["dancers"];
+            $username = $_SESSION['username'];  // Assuming 'username' is stored in session
+            
+            // Prepare SQL query with the data to post the database.
+            $sql_query = "INSERT INTO bookings (b_username, b_date, b_time, b_dancers) VALUES ('$username', '$date', '$time', '$dancers')";
+       
+            // Send the query to the database and check if it was successful
+            if (mysqli_query($conn, $sql_query)) {
+                $out_value = "Successfully booked!";
+            } else {
+                $out_value = "Error: " . mysqli_error($conn);  // Display error if query fails
+            }
+        }
+        $conn->close();
+        ?>
+  <!-- Create text boxes for user to input booking date, time, and dancer/s selection. -->
+  <div id="form">
       <h1>CREATE BOOKING</h1>
       <form name="form" action="" method="POST">
 
