@@ -44,7 +44,7 @@ Bookings table schema:
         // echo "Connected successfully";
 
         // Get the logged-in user's username 
-        //session_start();  
+        session_start();  
 
         // If the user enters those values, post it to the server. HTMl ensures that fields aren't left blank
         // ($_SERVER["REQUEST_METHOD"] and $_POST are parts of the PHP language.)
@@ -53,11 +53,10 @@ Bookings table schema:
             $date = $_POST["date"];
             $time = $_POST["time"];
             $dancers = $_POST["dancers"];
-            //$username = $_SESSION['username'];  // Assuming 'username' is stored in session
+            $username = $_SESSION['username'];  // Assuming 'username' is stored in session
             
             // Prepare SQL query with the data to post the database.
-            //$sql_query = "INSERT INTO bookings (b_username, b_date, b_time, b_dancers) VALUES ('$username', '$date', '$time', '$dancers')";
-            $sql_query = "INSERT INTO bookings (b_date, b_time, b_dancers) VALUES ( '$date', '$time', '$dancers')";
+            $sql_query = "INSERT INTO bookings (b_username, b_date, b_time, b_dancers) VALUES ('$username', '$date', '$time', '$dancers')";
        
             // Send the query to the database and check if it was successful
             if (mysqli_query($conn, $sql_query)) {
