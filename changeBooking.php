@@ -58,37 +58,39 @@
         // Starts the session and gathers appropriate variables
         session_start();
         include "config.php";
-        $username = $_SESSION['username'];
-        $id = $_POST['id'];
-        $date = $_POST["date"];
-        $time = $_POST["time"];
-        $dancers = $_POST["dancers"];
 
-        // Checks whether the booking is valid
-        $check_sql_id = "SELECT * FROM bookings WHERE b_id = ? AND b_username = ?";
-        $check_stmt_id = mysqli_prepare($conn, $check_sql_id);
-        mysqli_stmt_bind_param($check_stmt_id, "is", $id, $username);
-        mysqli_stmt_execute($check_stmt_id);
-        mysqli_stmt_store_result($check_stmt_id);
-        if (mysqli_stmt_num_rows($check_stmt_id) == 0) {
-            echo "Booking not found. It was either made under a different username or not at all. Please check your bookings for further information.";
-            exit();
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+          $username = $_SESSION['username'];
+          $id = $_POST['id'];
+          $date = $_POST["date"];
+          $time = $_POST["time"];
+          $dancers = $_POST["dancers"];
+          // Checks whether the booking is valid
+          $check_sql_id = "SELECT * FROM bookings WHERE b_id = ? AND b_username = ?";
+          $check_stmt_id = mysqli_prepare($conn, $check_sql_id);
+          mysqli_stmt_bind_param($check_stmt_id, "is", $id, $username);
+          mysqli_stmt_execute($check_stmt_id);
+          mysqli_stmt_store_result($check_stmt_id);
+          if (mysqli_stmt_num_rows($check_stmt_id) == 0) {
+              echo "Booking not found. It was either made under a different username or not at all. Please check your bookings for further information.";
+              exit();
+          }
+          else {
+              $sql = "UPDATE bookings
+              SET b_date = ?, b_time = ?, b_dancers = ?
+              WHERE b_id = ? AND b_username = ?";
+              $stmt = mysqli_prepare($conn, $sql);
+              mysqli_stmt_bind_param($stmt, "sssis", $date, $time, $dancers, $id, $username);
+              if (mysqli_stmt_execute($stmt)) {
+                  echo "Booking altered!";
+                  exit();
+              }
+              else {
+                  echo "Booking could not be altered. Please try again.";
+                  exit();
+              }
         }
-        else {
-            $sql = "UPDATE bookings
-            SET b_date = ?, b_time = ?, b_dancers = ?
-            WHERE b_id = ? AND b_username = ?";
-            $stmt = mysqli_prepare($conn, $sql);
-            mysqli_stmt_bind_param($stmt, "sssis", $date, $time, $dancers, $id, $username);
-            if (mysqli_stmt_execute($stmt)) {
-                echo "Booking altered!";
-                exit();
-            }
-            else {
-                echo "Booking could not be altered. Please try again.";
-                exit();
-            }
-        }
+      }
     ?>
 
   </body>

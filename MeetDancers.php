@@ -24,7 +24,7 @@
         <li><a href="index.php">Home Page</a></li>
         <li><a href="MeetDancers.php">Meet the Dancers</a></li>
         <li><a href="createAcc.php">Create Account</a></li>
-        <li><a href="logIn.php">Log In</a></li>
+        <li><a href="logIn.php">My Profile</a></li>
       </ul>
   </div>
 
