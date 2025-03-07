@@ -22,7 +22,7 @@ CREATE TABLE bookings (
     FOREIGN KEY (b_username) REFERENCES users(username) 
 );
 ```
-Finally, navigate to localhost:8080/index.html#home and enjoy!
+Finally, navigate to localhost:8080/index.php and enjoy!
 
 Work done was split evenly among all three group members (33.3/33.3/33.3)
  
