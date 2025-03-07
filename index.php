@@ -52,13 +52,7 @@
       </p>
       
       <h2>Book Our Services!</h2>
-
         <p> Create or log in to an account to get started on booking a dance service! </p>
-        <div id="book" class="book">
-          <ul>
-            <a href="createAcc.php">Create Account</a></li>
-            <a href="logIn.php">Log In</a></li>
-          </ul>
       </div>
       <p> This site was designed and published as part of the COMP 333 Software Engineering class at Wesleyan University. This is an exercise.
           However, if you think this is a good business venture please do let us know and we will maybe make it happen! Peace and love. 
