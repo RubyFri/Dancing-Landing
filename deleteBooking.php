@@ -21,9 +21,9 @@ Bookings table schema:
     <link rel="stylesheet" href="stylesheet.css">
 </head> 
 <body>
-    // The ID input form
+    <!-- The ID input form-->
     <div id="form">
-      <h1>CREATE ACCOUNT</h1>
+      <h1>Delete ACCOUNT</h1>
       <form name="form" action="" method="POST">
         <p>
           <label> Booking ID: </label>
@@ -32,7 +32,7 @@ Bookings table schema:
         </p>
       </form>
     </div>
-    // The PHP code
+    <!-- The PHP code -->
     <?php
         include "config.php";
         $bookingid = $_POST['bookingid'];
