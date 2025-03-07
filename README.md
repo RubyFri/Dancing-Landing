@@ -24,7 +24,13 @@ CREATE TABLE bookings (
 ```
 Finally, navigate to localhost:8080/index.php and enjoy!
 
+Ruby's local phpMyAdmin interface
 ‎![alt text](RubysPHPadmin.png)
+
+Yenta's local phpMyAdmin interface
+‎![alt text](YentasPHPadmin.png)
+
+Sage had technical difficulties and she went to office hours with the professor, as a result she was not able to set up PHP admin but she still contributed an equivalent share.
 
 Work done was split evenly among all three group members (33.3/33.3/33.3)
  
