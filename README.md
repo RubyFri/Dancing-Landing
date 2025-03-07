@@ -24,5 +24,7 @@ CREATE TABLE bookings (
 ```
 Finally, navigate to localhost:8080/index.php and enjoy!
 
+‎![alt text](RubysPHPadmin.png)
+
 Work done was split evenly among all three group members (33.3/33.3/33.3)
  
