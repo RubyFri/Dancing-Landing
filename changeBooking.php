@@ -59,7 +59,7 @@
         session_start();
               // should tell the user that they are logged in ontop of page
         if(isset($_SESSION['username'])){
-          echo "You are currently logged in as " . $_SESSION['username'];
+          echo "<p>You are currently logged in as " . $_SESSION['username']. "</p>";
         }
         include "config.php";
 
@@ -70,7 +70,7 @@
           $time = $_POST["time"];
           $dancers = $_POST["dancers"];
 
-          if (!empty($date) && !empty($time) && !empty($dancers) && !empty($username) && !isempty($id)){
+          if (!empty($date) && !empty($time) && !empty($dancers) && !empty($username) && !empty($id)){
             // Checks whether the booking is valid
             $check_sql_id = "SELECT * FROM bookings WHERE b_id = ? AND b_username = ?";
             $check_stmt_id = mysqli_prepare($conn, $check_sql_id);
