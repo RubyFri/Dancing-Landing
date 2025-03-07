@@ -1,7 +1,7 @@
 <!-- 
 This is a PHP script so users can BOOK an appointment. 
 The form requires users to enter 3 values: date, time and dancers, and these
-values get added to a row in the DancingQueens db, bookings table.
+values get added to a row in the app-db db, bookings table.
 Bookings table schema:
     primary key: id, INT(11)  #
     foreign key: username, VARCHAR(255) # user's username
