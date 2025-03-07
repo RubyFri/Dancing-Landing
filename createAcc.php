@@ -9,12 +9,13 @@
     <link rel="stylesheet" href="stylesheet.css">
   </head> 
   <body>
-    <div id="navbar" class="navbar">
-        <ul>
-          <li><a href="index.html#home">Home Page</a></li>
-          <li><a href="MeetDancers.html">Meet the Dancers</a></li>
-        </ul>
-    </div>
+  <div id="navbar" class="navbar">
+      <ul>
+        <li><a href="index.html#home">Home Page</a></li>
+        <li><a href="MeetDancers.html">Meet the Dancers</a></li>
+        <li><a href="logIn.php">Log In</a></li>
+      </ul>
+  </div>
      <div id="form">
       <h1>CREATE ACCOUNT</h1>
       <form name="form" action="" method="POST">
