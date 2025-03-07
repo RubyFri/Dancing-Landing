@@ -17,7 +17,7 @@
 
     <div class = "mission">
     <p> Logged Out </p>
-    <p> <a href="index.html#home">Return to Home Page</a> </p>
+    <p> <a href="index.php">Return to Home Page</a> </p>
     </div>
 </body>
 </html>
