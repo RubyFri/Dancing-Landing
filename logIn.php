@@ -22,12 +22,12 @@
       <form name="form" action="" method="POST">
         <p>
           <label>Username: </label>
-          <input type="text" id="user" name="userid"/>
+          <input type="text" id="user" name="userid" required/>
         </p>
 
         <p>
           <label>Password: </label>
-          <input type="password" id="pass" name="password" />
+          <input type="password" id="pass" name="password" required/>
         </p>
         <p>
         <p>
