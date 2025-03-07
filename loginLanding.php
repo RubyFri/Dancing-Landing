@@ -11,8 +11,8 @@
   <body>
   <div id="navbar" class="navbar">
         <ul>
-          <li><a href="index.php">Home Page</a></li>
-          <li><a href="MeetDancers.php">Meet the Dancers</a></li>
+        <li><a href="index.html">Home Page</a></li>
+        <li><a href="MeetDancers.html">Meet the Dancers</a></li>
         </ul>
     </div>
     <?php
