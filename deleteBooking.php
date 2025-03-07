@@ -38,7 +38,7 @@ Bookings table schema:
         $bookingid = $_POST['bookingid'];
 
         // We determine if the given ID is in the user's bookings
-        $check_sql_id = "SELECT * FROM bookings WHERE id = ? AND username = ?";
+        $check_sql_id = "SELECT * FROM bookings WHERE b_id = ? AND b_username = ?";
         $check_stmt_id = mysqli_prepare($conn, $check_sql_id);
         mysqli_stmt_bind_param($check_stmt_id, "is", $bookingid, $username);
         mysqli_stmt_execute($check_stmt_id);
@@ -49,7 +49,7 @@ Bookings table schema:
         }
 
         // Finally, we delete the booking
-        $sql = "DELETE FROM bookings WHERE id = ?";
+        $sql = "DELETE FROM bookings WHERE b_id = ?";
         $stmt = mysqli_prepare($conn, $sql);
         mysqli_stmt_bind_param($stmt, "i", $bookingid);
         if (mysqli_stmt_execute($stmt)){
