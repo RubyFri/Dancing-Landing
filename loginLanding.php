@@ -11,8 +11,8 @@
   <body>
   <div id="navbar" class="navbar">
         <ul>
-          <li><a href="createBooking.php">Create Booking</a></li>
-          <li><a href="deleteBooking.php">Delete Booking</a></li>
+          <li><a href="index.html#home">Home Page</a></li>
+          <li><a href="MeetDancers.html">Meet the Dancers</a></li>
         </ul>
     </div>
     <?php
@@ -79,3 +79,13 @@ if ($result) {
 $stmt->close();
 $db->close();
 ?>
+
+<div id="navbar" class="navbar">
+        <ul>
+          <li><a href="createBooking.php">Create Booking</a></li>
+          <li><a href="deleteBooking.php">Delete Booking</a></li>
+          <li><a href="changeBooking.php">Modify Booking</a></li>
+        </ul>
+</div>
+</body>
+</html>
