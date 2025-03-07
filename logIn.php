@@ -35,7 +35,11 @@
     </div>
     <?php
     session_start();
-    if(!isset($_SERVER["loggedin"])){
+    if(isset($_SERVER['username'])){
+      header("Location: loginLanding.php");
+      exit();
+    }
+    else {
       include 'config.php';
       if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $userid = $_POST['userid'];
@@ -43,34 +47,31 @@
 
         $sql = "SELECT password FROM users WHERE username = ?";
         $stmt = mysqli_prepare($conn, $sql);
-      // Bind the values for username and password that the user entered to the
-      // statement AS STRINGS (that is what "ss" means). In other words, the
-      // user input is strictly interpreted by the server as data and not as
-      // porgram code part of the SQL statement.
-      mysqli_stmt_bind_param($stmt, "s", $userid);
-      mysqli_stmt_execute($stmt);
-      mysqli_stmt_store_result($stmt);
-      if (mysqli_stmt_num_rows($stmt) > 0) {
-        mysqli_stmt_bind_result($stmt, $hashed_password);
-        mysqli_stmt_fetch($stmt);
-        if (password_verify($password1, $hashed_password)) {
-          echo "Login Success";
-          $_SESSION['loggedin'] = true;
-          $_SESSION['username'] = $userid;
-          // Redirect to landing page
-          header("Location: loginLanding.php");
-          
-        }
-        else {
-          echo "Wrong User id or password";
-        }
+        // Bind the values for username and password that the user entered to the
+        // statement AS STRINGS (that is what "ss" means). In other words, the
+        // user input is strictly interpreted by the server as data and not as
+        // porgram code part of the SQL statement.
+        mysqli_stmt_bind_param($stmt, "s", $userid);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_store_result($stmt);
+        if (mysqli_stmt_num_rows($stmt) > 0) {
+          mysqli_stmt_bind_result($stmt, $hashed_password);
+          mysqli_stmt_fetch($stmt);
+          if (password_verify($password1, $hashed_password)) {
+            echo "Login Success";
+            $_SESSION['loggedin'] = true;
+            $_SESSION['username'] = $userid;
+            // Redirect to landing page
+            header("Location: loginLanding.php");
+            
+          }
+          else {
+            echo "Wrong User id or password";
+          }
       }
       else {
         echo "Wrong User id or password";
       }
-    }
-    else {
-      header("Location: loginLanding.php");
     }
   }
   ?>
