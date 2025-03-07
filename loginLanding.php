@@ -55,7 +55,8 @@ if ($result) {
                         <th>Booking ID</th>
                         <th>Customer Name</th>
                         <th>Booking Date</th>
-                        <th>Additional Info</th>
+                        <th>Booking Time</th>
+                        <th>Dancers Booked</th>
                     </tr>
                 </thead>
                 <tbody>";
@@ -64,6 +65,7 @@ if ($result) {
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             echo "<tr>
                     <td>" . htmlspecialchars($row['b_id']) . "</td>
+                    <td>" . htmlspecialchars($row['b_username']) . "</td>
                     <td>" . htmlspecialchars($row['b_date']) . "</td>
                     <td>" . htmlspecialchars($row['b_time']) . "</td>
                     <td>" . htmlspecialchars($row['b_dancers']) . "</td>
