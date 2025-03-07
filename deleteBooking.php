@@ -23,7 +23,7 @@ Bookings table schema:
 <body>
     <!-- The ID input form-->
     <div id="form">
-      <h1>Delete ACCOUNT</h1>
+      <h1>Delete Booking</h1>
       <form name="form" action="" method="POST">
         <p>
           <label> Booking ID: </label>
