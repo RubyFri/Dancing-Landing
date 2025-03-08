@@ -4,8 +4,9 @@ SWE HW2 Web App
 Team: Ruby, Yenta, Sage
 
 This is a demo web app for Software Engineering.
+To view and install the app visit https://thedancingqueens.great-site.net
 
-In order to run this app, download and set up XAMPP, place all files into the htdocs folder (replacing the files there by default), and navigate to localhost:8080/phpmyadmin in your browser. In PHPMyAdmin, create a new database named app-db, and enter the SQL tab.
+In order to run this app locally, download and set up XAMPP, place all files into the htdocs folder (replacing the files there by default), and navigate to localhost:8080/phpmyadmin in your browser. In PHPMyAdmin, create a new database named app-db, and enter the SQL tab.
 
 Once you have a query window, input the following two queries to create the necessary tables:
 ```
