@@ -11,7 +11,7 @@
   <body>
     <div id="navbar" class="navbar">
         <ul>
-          <li><a href="index.php#home">Home Page</a></li>
+          <li><a href="index.php">Home Page</a></li>
           <li><a href="MeetDancers.php">Meet the Dancers</a></li>
         </ul>
     </div>
@@ -43,7 +43,7 @@
     include 'config.php';
     // should tell the user that they are logged in ontop of page
     if(isset($_SESSION['username'])){
-      echo "<p>You are currently logged in as " . $_SESSION['username']."</p>"";
+      echo "<p>You are currently logged in as " . $_SESSION['username'] . "</p>";
     }
     $userid = $_POST['userid'];
     $password1 = $_POST['password1'];
