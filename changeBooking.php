@@ -14,7 +14,7 @@
         <ul>
         <li><a href="index.php">Home Page</a></li>
         <li><a href="MeetDancers.php">Meet the Dancers</a></li>
-          <li><a href="logInLanding.php">My Profile</a></li>
+          <li><a href="loginLanding.php">My Profile</a></li>
         </ul>
     </div>
     <!-- The ID input form-->
